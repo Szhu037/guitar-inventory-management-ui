@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Guitar</title>
+</head>
+<body>
+<div>
+    <label>SerialNumber:</label>
+    <input SerialNumber="SerialNumber" />
+    <label>Price:</label>
+    <input Price="Price"/>
+    <label>Builder:</label>
+    <input Builder="Builder" />
+    <label>Model:</label>
+    <input Model="Model"/>
+    <label>Type:</label>
+    <input Type="Type" />
+    <label>Back wood:</label>
+    <input Back wood="Backwood"/>
+    <label>Top wood:</label>
+    <input Top wood="Topwood"/>
+    <button onclick="addGuitar()">Add the guitar</button>
+</div>
+<script>
+    let host = "http://localhost:8080";
+    async function addGuitar() {
+        let message = "";
+        let guitarId = document.getElementById("id").value;
+        let guitarType = document.getElementById("type").value;
+        let duck = { id: duckId, type: duckType };
+        console.log("You entered:" + JSON.stringify(Guitar));
+
+        //TODO
+        let request = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(Guitar)
+        };
+        let response = await fetch(host + "/guitar", request);
+        if (response.status == 200) {
+            let result = await submitTheImage();
+            if (result) {
+                message = "The guitar was added to the system";
+            }
+            else {
+                message = "Something went wrong! Please try again or contact the customer support team";
+            }
+        }
+        else {
+            console.log(response);
+            message = "Something went wrong! Guitar data could not be saved.";
+        }
+        alert(message);
+
+    }
+</script>
+</body>
+</html>
