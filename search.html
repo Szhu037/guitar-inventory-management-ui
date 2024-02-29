@@ -59,31 +59,30 @@
 
 <script>
     const axios = require('axios');
-    let ducks = [{id: 1, type: "Mallard"},
-        {id: 2, type: "Redhead"},];
+    let guitars = [];
 
     async function getAll() {
         let host = "http://localhost:8080"
         //TODO
         try {
-            const response = await axios.get('${host}/ducks');
-            ducks = response.data;
+            const response = await axios.get('${host}/guitars');
+            guitars = response.data;
         } catch (error) {
-            console.error('Error fetching ducks:', error);
-            ducks = [];
+            console.error('Error fetching guitars:', error);
+            guitars = [];
         }
     }
 
     async function search() {
-        if (ducks.length == 0) {
-            ducks = await getAll();
+        if (guitars.length == 0) {
+            guitars = await getAll();
         }
 
-        let duckType = document.getElementById("type").value;
+        let guitarType = document.getElementById("type").value;
         let table = document.getElementById("result");
         table.innerHTML = "";
 
-        for (let duck of ducks) {
+        for (let guitar of guitars) {
             if (!duckType || duck.type.toLowerCase() == duckType.toLowerCase()) {
                 let row = document.createElement("tr");
                 let cell1 = document.createElement("td");
