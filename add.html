@@ -27,9 +27,14 @@
     let host = "http://localhost:8080";
     async function addGuitar() {
         let message = "";
-        let guitarId = document.getElementById("id").value;
-        let guitarType = document.getElementById("type").value;
-        let Guitar = { id: guitarId, type: guitarType };
+        let serialNumber = document.getElementById("SerialNumber").value;
+        let guitarPrice = document.getElementById("Price").value;
+        let guitarBuilder = document.getElementById("Builder").value;
+        let guitarModel = document.getElementById("Model").value;
+        let guitarType = document.getElementById("Type").value;
+        let backWood = document.getElementById("Backwood").value;
+        let topWood = document.getElementById("Topwood").value;
+        let Guitar = {};
         console.log("You entered:" + JSON.stringify(Guitar));
 
         //TODO
